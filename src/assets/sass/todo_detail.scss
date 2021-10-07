@@ -1,0 +1,126 @@
+.todo-header {
+  .todo-title {
+    display: flex;
+    align-items: center;
+    .icon-back {
+      margin-right: 20px;
+    }
+    .icon-edit-h {
+      margin-left: 27px;
+    }
+    h1 {
+      margin-bottom: 0px;
+      max-width: 583px;
+    }
+    input {
+      background-color: transparent;
+      border: 0px;
+      font-size: 36px;
+      font-weight: 700;
+      border-bottom: 1px solid;
+      max-width: 583px;
+    }
+    input:focus {
+      outline: none;
+    }
+  }
+  .btn {
+    min-width: 170px;
+  }
+  .btn-sort {
+    border-radius: 50%;
+    border: 1px solid #e5e5e5;
+    background-color: transparent;
+    height: 54px;
+    width: 54px;
+    margin-right: 18px;
+  }
+  .dropdown-menu {
+    padding: 0px;
+    box-shadow: 8px 4px 8px 0px rgba(0, 0, 0, 0.1);
+    &.show {
+      width: 235px;
+      border-radius: 6px;
+    }
+    ul {
+      &.list-unstyled {
+        margin-bottom: 0px;
+      }
+    }
+  }
+  .dropdown-item {
+    height: 52px;
+    padding: 0px;
+    &.active {
+      color: $black;
+    }
+    .item-label {
+      padding: 14px 21px;
+      border-bottom: 1px solid #e5e5e5;
+      &.active::after {
+        content: url('../images/icon-check.svg');
+        position: absolute;
+        left: 200px;
+        margin-top: 0px;
+      }
+    }
+    span {
+      margin-left: 15px;
+    }
+  }
+}
+
+.detail-content {
+  .empty-item {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .content-item {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    margin-bottom: 10px;
+    padding: 27px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+    .form-check {
+      input {
+        height: 24px;
+        width: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 20px;
+        border: 1px solid #c7c7c7;
+      }
+      input:checked {
+        background-color: $primary;
+        border-color: $primary;
+      }
+    }
+    .form-check-input {
+      margin-top: 0px;
+      border-radius: 0px;
+    }
+    .priority {
+      height: 9px;
+      width: 9px;
+      border-radius: 50%;
+      background-color: #fd695b;
+      margin-right: 16px;
+    }
+    span {
+      font-size: 18px;
+      font-weight: 500;
+      margin-right: 16px;
+      &.todo-done {
+        text-decoration: line-through;
+        color: #888888;
+      }
+    }
+    img {
+      cursor: pointer;
+    }
+  }
+}
