@@ -92,8 +92,8 @@ function DashboardModule() {
   return (
     <div className="container">
       <div className="todo-header">
-        <h1>Activity</h1>
-        <button className="btn btn-primary" onClick={handleAddActivity}>
+        <h1 data-cy="dashboard-title">Activity</h1>
+        <button className="btn btn-primary" data-cy="activity-add-button" onClick={handleAddActivity}>
           {isLoadingAddActivity ? (
             <Spinner
               as="span"
@@ -124,13 +124,13 @@ function DashboardModule() {
           <div className="row">
             {
               dataGetActivities?.data?.length < 1 &&
-              <div className="empty-item">
+              <div className="empty-item" data-cy="activity-empty-state">
                 <img src={emptyItem} alt="empty" onClick={handleAddActivity} />
               </div>
             }
             {dataGetActivities?.data?.map((item, key) => (
               <div key={item?.id} className="col-3">
-                <div className="activity-card" id={`itemTodo${key}`}>
+                <div className="activity-card" data-cy={`activity-item-${key}`} id={`itemTodo${key}`}>
                   <div
                     className="activity-body"
                     onClick={() => history.push(`/detail/${item?.id}`)}
@@ -147,7 +147,7 @@ function DashboardModule() {
                       src={deleteIcon}
                       onClick={() => handleClickDelete(item)}
                       alt="delete"
-                      id="ButtonDelete"
+                      data-cy="activity-item-delete"
                     />
                   </div>
                 </div>

@@ -61,6 +61,7 @@ function ModalDelete({
         aria-labelledby="contained-modal-title-vcenter"
         centered
         id="ModalDelete"
+        data-cy="todo-modal-delete"
       >
         <Modal.Header>
           <Modal.Title id="contained-modal-title-vcenter" className="pt-4">

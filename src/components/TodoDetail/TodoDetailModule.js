@@ -261,7 +261,7 @@ function TodoDetailModule() {
                   value={titleState}
                 />
               ) : (
-                <h1 id="TitleDetail" onClick={handleEditTitle}>{titleState}</h1>
+                <h1 id="TitleDetail" data-cy="todo-subtitle" onClick={handleEditTitle}>{titleState}</h1>
               )}
               <div className="icon-edit-h" onClick={handleEditTitle}></div>
             </div>
@@ -271,7 +271,7 @@ function TodoDetailModule() {
                   as={CustomToggle}
                   id="dropdown-custom-components"
                 >
-                  <button id="ButtonSort" className="btn-sort">
+                  <button id="ButtonSort" data-cy="todo-sort-button" className="btn-sort">
                     <div className="icon-sort"></div>
                   </button>
                 </Dropdown.Toggle>
@@ -344,6 +344,7 @@ function TodoDetailModule() {
                 className="btn btn-primary"
                 onClick={() => setShowAddItem(true)}
                 id="ButtonAddDetail"
+                data-cy="todo-add-button"
               >
                 <span className="icon-plus"></span> Tambah
               </button>
@@ -351,18 +352,19 @@ function TodoDetailModule() {
           </div>
           <div className="detail-content">
             {dataGetActivityDetail?.todo_items?.length < 1 ? (
-              <div className="empty-item">
+              <div className="empty-item" data-cy="todo-empty-state">
                 <img src={emptyItem} alt="empty" id="TextEmptyTodo" onClick={() => setShowAddItem(true)}/>
               </div>
             ) : (
-              listItems.map((item) => (
-                <div key={item.id} className="content-item">
+              listItems.map((item, key) => (
+                <div key={item.id} className="content-item" data-cy={`todo-item-${key}`}>
                   <div className="d-flex align-items-center form-check">
                     <Form.Check
                       checked={item?.is_active === 0}
                       type="checkbox"
                       id={`default-${item.id}`}
                       onChange={() => handleChekbox(item.id)}
+                      data-cy="todo-checkbox"
                     />
                     <div className={`label-indicator ${item.priority}`}></div>
                     <span className={`${item?.is_active === 0 && "todo-done"}`}>
@@ -377,7 +379,7 @@ function TodoDetailModule() {
                     src={deleteIcon}
                     alt="delete"
                     onClick={() => handleClickDelete(item)}
-                    id="ButtonRemoveDetail"
+                    data-cy="todo-item-delete"
                   />
                 </div>
               ))
