@@ -357,7 +357,7 @@ function TodoDetailModule() {
             ) : (
               listItems.map((item) => (
                 <div key={item.id} className="content-item">
-                  <div className="d-flex align-items-center">
+                  <div className="d-flex align-items-center form-check">
                     <Form.Check
                       checked={item?.is_active === 0}
                       type="checkbox"
