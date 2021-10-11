@@ -52,7 +52,7 @@ function ModalDelete({
   };
 
   return (
-    <div>
+    <div data-cy="modal-delete">
       <Modal
         show={show}
         onHide={handleClose}
@@ -65,8 +65,8 @@ function ModalDelete({
       >
         <Modal.Header>
           <Modal.Title id="contained-modal-title-vcenter" className="pt-4">
-            <img src={alertIcon} alt="alert" />
-            <h4 className="font-weight-bold">{title}</h4>
+            <img src={alertIcon} alt="alert" data-cy="modal-delete-icon" />
+            <h4 className="font-weight-bold" data-cy="modal-delete-title">{title}</h4>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -76,10 +76,10 @@ function ModalDelete({
           ></p>
         </Modal.Body>
         <Modal.Footer className="pb-4">
-          <button className="btn btn-secondary" onClick={handleClose}>
+          <button className="btn btn-secondary" data-cy="modal-delete-cancel-button" onClick={handleClose}>
             Batal
           </button>
-          <button className="btn btn-danger" onClick={handleClickDelete}>
+          <button className="btn btn-danger" data-cy="modal-delete-confirm-button" onClick={handleClickDelete}>
             {(isLoadingDeleteActivity || isLoadingDeleteItem) ? (
               <Spinner
                 as="span"

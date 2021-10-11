@@ -127,7 +127,9 @@ function TodoDetailModule() {
       let sortedItems = Immutable.asMutable(items).sort(sortAlphabetDescending);
       setListItems(sortedItems);
     } else {
-      let sortedItems = Immutable.asMutable(items).sort((a,b) => b.is_active - a.is_active );
+      let sortedItems = Immutable.asMutable(items).sort(
+        (a, b) => b.is_active - a.is_active
+      );
       setListItems(sortedItems);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -251,6 +253,7 @@ function TodoDetailModule() {
               <div
                 className="icon-back"
                 onClick={() => history.push("/")}
+                data-cy="todo-back-button"
               ></div>
               {isEditTitle ? (
                 <input
@@ -261,9 +264,19 @@ function TodoDetailModule() {
                   value={titleState}
                 />
               ) : (
-                <h1 id="TitleDetail" data-cy="todo-subtitle" onClick={handleEditTitle}>{titleState}</h1>
+                <h1
+                  id="TitleDetail"
+                  data-cy="todo-title"
+                  onClick={handleEditTitle}
+                >
+                  {titleState}
+                </h1>
               )}
-              <div className="icon-edit-h" onClick={handleEditTitle}></div>
+              <div
+                className="icon-edit-h"
+                data-cy="todo-title-edit-button"
+                onClick={handleEditTitle}
+              ></div>
             </div>
             <div className="d-flex">
               <Dropdown>
@@ -271,71 +284,108 @@ function TodoDetailModule() {
                   as={CustomToggle}
                   id="dropdown-custom-components"
                 >
-                  <button id="ButtonSort" data-cy="todo-sort-button" className="btn-sort">
+                  <button
+                    id="ButtonSort"
+                    data-cy="todo-sort-button"
+                    className="btn-sort"
+                  >
                     <div className="icon-sort"></div>
                   </button>
                 </Dropdown.Toggle>
 
-                <Dropdown.Menu as={CustomMenu}>
-                  <Dropdown.Item eventKey="1">
+                <Dropdown.Menu as={CustomMenu} data-cy="sort-parent">
+                  <Dropdown.Item eventKey="1" data-cy="sort-selection">
                     <div
                       className={`d-flex item-label ${
                         activeDropdown === 1 && "active"
                       }`}
                       onClick={() => setActiveDropdown(1)}
+                      data-cy={
+                        activeDropdown === 1 && "sort-selection-selected"
+                      }
                     >
-                      <div className="icon-sort-newest"></div>
-                      <span>Terbaru</span>
+                      <div
+                        data-cy="sort-selection-icon"
+                        className="icon-sort-newest"
+                      ></div>
+                      <span data-cy="sort-selection-title">Terbaru</span>
                     </div>
                   </Dropdown.Item>
                   <Dropdown.Item
                     eventKey="2"
                     onClick={() => setActiveDropdown(2)}
+                    data-cy="sort-selection"
                   >
                     <div
                       className={`d-flex item-label ${
                         activeDropdown === 2 && "active"
                       }`}
+                      data-cy={
+                        activeDropdown === 2 && "sort-selection-selected"
+                      }
                     >
-                      <div className="icon-sort-oldest"></div>
-                      <span>Terlama</span>
+                      <div
+                        data-cy="sort-selection-icon"
+                        className="icon-sort-oldest"
+                      ></div>
+                      <span data-cy="sort-selection-title">Terlama</span>
                     </div>
                   </Dropdown.Item>
-                  <Dropdown.Item eventKey="3">
+                  <Dropdown.Item eventKey="3" data-cy="sort-selection">
                     <div
                       className={`d-flex item-label ${
                         activeDropdown === 3 && "active"
                       }`}
                       onClick={() => setActiveDropdown(3)}
+                      data-cy={
+                        activeDropdown === 3 && "sort-selection-selected"
+                      }
                     >
-                      <div className="icon-sort-a-alpha"></div>
-                      <span>A-Z</span>
+                      <div
+                        data-cy="sort-selection-icon"
+                        className="icon-sort-a-alpha"
+                      ></div>
+                      <span data-cy="sort-selection-title">A-Z</span>
                     </div>
                   </Dropdown.Item>
                   <Dropdown.Item
                     eventKey="4"
                     onClick={() => setActiveDropdown(4)}
+                    data-cy="sort-selection"
                   >
                     <div
                       className={`d-flex item-label ${
                         activeDropdown === 4 && "active"
                       }`}
+                      data-cy={
+                        activeDropdown === 4 && "sort-selection-selected"
+                      }
                     >
-                      <div className="icon-sort-d-alpha"></div>
-                      <span>Z-A</span>
+                      <div
+                        data-cy="sort-selection-icon"
+                        className="icon-sort-d-alpha"
+                      ></div>
+                      <span data-cy="sort-selection-title">Z-A</span>
                     </div>
                   </Dropdown.Item>
                   <Dropdown.Item
                     eventKey="5"
                     onClick={() => setActiveDropdown(5)}
+                    data-cy="sort-selection"
                   >
                     <div
                       className={`d-flex item-label ${
                         activeDropdown === 5 && "active"
                       }`}
+                      data-cy={
+                        activeDropdown === 5 && "sort-selection-selected"
+                      }
                     >
-                      <div className="icon-sort-done"></div>
-                      <span>Belum Selesai</span>
+                      <div
+                        data-cy="sort-selection-icon"
+                        className="icon-sort-done"
+                      ></div>
+                      <span data-cy="sort-selection-title">Belum Selesai</span>
                     </div>
                   </Dropdown.Item>
                 </Dropdown.Menu>
@@ -353,33 +403,40 @@ function TodoDetailModule() {
           <div className="detail-content">
             {dataGetActivityDetail?.todo_items?.length < 1 ? (
               <div className="empty-item" data-cy="todo-empty-state">
-                <img src={emptyItem} alt="empty" id="TextEmptyTodo" onClick={() => setShowAddItem(true)}/>
+                <img
+                  src={emptyItem}
+                  alt="empty"
+                  id="TextEmptyTodo"
+                  onClick={() => setShowAddItem(true)}
+                />
               </div>
             ) : (
               listItems.map((item, key) => (
-                <div key={item.id} className="content-item" data-cy={`todo-item-${key}`}>
+                <div key={item.id} className="content-item" data-cy="todo-item">
                   <div className="d-flex align-items-center form-check">
-                    <Form.Check
-                      checked={item?.is_active === 0}
-                      type="checkbox"
-                      id={`default-${item.id}`}
-                      onChange={() => handleChekbox(item.id)}
-                      data-cy="todo-checkbox"
-                    />
-                    <div className={`label-indicator ${item.priority}`}></div>
-                    <span className={`${item?.is_active === 0 && "todo-done"}`}>
+                    <div data-cy="todo-item-checkbox">
+                      <Form.Check
+                        checked={item?.is_active === 0}
+                        type="checkbox"
+                        id={`default-${item.id}`}
+                        onChange={() => handleChekbox(item.id)}
+                      />
+                    </div>
+                    <div data-cy="todo-item-priority-indicator" className={`label-indicator ${item.priority}`}></div>
+                    <span data-cy="todo-item-title" className={`${item?.is_active === 0 && "todo-done"}`}>
                       {item.title}
                     </span>
                     <div
                       className="icon-edit-p"
                       onClick={() => handleClickEdit(item)}
+                      data-cy="todo-item-edit-button"
                     ></div>
                   </div>
                   <img
                     src={deleteIcon}
                     alt="delete"
                     onClick={() => handleClickDelete(item)}
-                    data-cy="todo-item-delete"
+                    data-cy="todo-item-delete-button"
                   />
                 </div>
               ))

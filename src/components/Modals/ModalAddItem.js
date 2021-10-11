@@ -61,13 +61,13 @@ function ModalAddItem({ show, handleClose, title, text }) {
     const data = {
       title: itemName,
       activity_group_id: params,
-      priority
-    }
+      priority,
+    };
     addItem(data);
   };
 
   return (
-    <div>
+    <div data-cy="modal-add">
       <Modal
         show={show}
         onHide={handleClose}
@@ -78,28 +78,38 @@ function ModalAddItem({ show, handleClose, title, text }) {
       >
         <Modal.Header>
           <Modal.Title id="contained-modal-title-vcenter" className="pt-4">
-            <h4 className="font-weight-bold">Tambah List Item</h4>
-            <div className="icon-close" onClick={handleClose}></div>
+            <h4 className="font-weight-bold" data-cy="modal-add-title">
+              Tambah List Item
+            </h4>
+            <div
+              className="icon-close"
+              onClick={handleClose}
+              data-cy="modal-add-close-button"
+            ></div>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form.Group>
-            <label>NAMA LIST ITEM</label>
-            <Form.Control
-              onChange={(e) => setItemName(e.target.value)}
-              placeholder="Tambahkan nama Activity"
-              id="AddFormTitle"
-            />
-            <label>PRIORITY</label>
+            <label data-cy="modal-add-name-title">NAMA LIST ITEM</label>
+            <div data-cy="modal-add-name-input">
+              <Form.Control
+                onChange={(e) => setItemName(e.target.value)}
+                placeholder="Tambahkan nama Activity"
+                id="AddFormTitle"
+              />
+            </div>
+            <label data-cy="modal-add-priority-title">PRIORITY</label>
             <br />
-            <Select
-              defaultValue={options[0]}
-              formatOptionLabel={formatOptionLabel}
-              options={options}
-              className="select-priority"
-              onChange={(e) => setPriority(e.value)}
-              id="AddFormPriority"
-            />
+            <div data-cy="modal-add-priority-dropdown">
+              <Select
+                defaultValue={options[0]}
+                formatOptionLabel={formatOptionLabel}
+                options={options}
+                className="select-priority"
+                onChange={(e) => setPriority(e.value)}
+                id="AddFormPriority"
+              />
+            </div>
           </Form.Group>
         </Modal.Body>
         <Modal.Footer className="pb-4">
@@ -108,6 +118,7 @@ function ModalAddItem({ show, handleClose, title, text }) {
             onClick={submitAdd}
             disabled={itemName === ""}
             id="AddFormSubmit"
+            data-cy="modal-add-save-button"
           >
             {isLoadingAddItem ? (
               <Spinner

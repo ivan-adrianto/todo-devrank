@@ -3,7 +3,7 @@ import { Modal } from "react-bootstrap";
 
 function ModalToast({ show, handleClose, title, text, type }) {
   return (
-    <div>
+    <div data-cy="modal-information">
       <Modal
         show={show}
         onHide={handleClose}
@@ -13,8 +13,8 @@ function ModalToast({ show, handleClose, title, text, type }) {
         centered
       >
         <Modal.Body onClick={handleClose} >
-          <div className={type === "success" ? "icon-alert-sm" : "icon-danger-sm"}></div>
-          <p className="pl-3 pr-3">{text}</p>
+          <div data-cy="modal-information-icon" className={type === "success" ? "icon-alert-sm" : "icon-danger-sm"}></div>
+          <p data-cy="modal-information-title" className="pl-3 pr-3">{text}</p>
         </Modal.Body>
       </Modal>
     </div>

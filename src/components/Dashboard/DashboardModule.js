@@ -92,7 +92,7 @@ function DashboardModule() {
   return (
     <div className="container">
       <div className="todo-header">
-        <h1 data-cy="dashboard-title">Activity</h1>
+        <h1 data-cy="activity-title">Activity</h1>
         <button className="btn btn-primary" data-cy="activity-add-button" onClick={handleAddActivity}>
           {isLoadingAddActivity ? (
             <Spinner
@@ -130,15 +130,15 @@ function DashboardModule() {
             }
             {dataGetActivities?.data?.map((item, key) => (
               <div key={item?.id} className="col-3">
-                <div className="activity-card" data-cy={`activity-item-${key}`} id={`itemTodo${key}`}>
+                <div className="activity-card" data-cy="activity-item" id={`itemTodo${key}`}>
                   <div
                     className="activity-body"
                     onClick={() => history.push(`/detail/${item?.id}`)}
                   >
-                    <h4>{item?.title}</h4>
+                    <h4 data-cy="activity-item-title">{item?.title}</h4>
                   </div>
                   <div className="card-footer">
-                    <span>
+                    <span data-cy="activity-item-date">
                       {dayjs(item?.created_at)
                         .locale("id")
                         .format("DD MMMM YYYY")}
@@ -147,7 +147,7 @@ function DashboardModule() {
                       src={deleteIcon}
                       onClick={() => handleClickDelete(item)}
                       alt="delete"
-                      data-cy="activity-item-delete"
+                      data-cy="activity-item-delete-button"
                     />
                   </div>
                 </div>
