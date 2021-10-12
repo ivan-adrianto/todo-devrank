@@ -414,16 +414,21 @@ function TodoDetailModule() {
               listItems.map((item, key) => (
                 <div key={item.id} className="content-item" data-cy="todo-item">
                   <div className="d-flex align-items-center form-check">
-                    <div data-cy="todo-item-checkbox">
-                      <Form.Check
-                        checked={item?.is_active === 0}
-                        type="checkbox"
-                        id={`default-${item.id}`}
-                        onChange={() => handleChekbox(item.id)}
-                      />
-                    </div>
-                    <div data-cy="todo-item-priority-indicator" className={`label-indicator ${item.priority}`}></div>
-                    <span data-cy="todo-item-title" className={`${item?.is_active === 0 && "todo-done"}`}>
+                    <Form.Check
+                      checked={item?.is_active === 0}
+                      type="checkbox"
+                      id={`default-${item.id}`}
+                      onChange={() => handleChekbox(item.id)}
+                      data-cy="todo-item-checkbox"
+                    />
+                    <div
+                      data-cy="todo-item-priority-indicator"
+                      className={`label-indicator ${item.priority}`}
+                    ></div>
+                    <span
+                      data-cy="todo-item-title"
+                      className={`${item?.is_active === 0 && "todo-done"}`}
+                    >
                       {item.title}
                     </span>
                     <div

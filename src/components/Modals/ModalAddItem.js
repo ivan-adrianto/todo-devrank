@@ -51,7 +51,10 @@ function ModalAddItem({ show, handleClose, title, text }) {
   ];
 
   const formatOptionLabel = ({ value, label }) => (
-    <div data-cy="modal-add-priority-item" className="d-flex align-items-center">
+    <div
+      data-cy="modal-add-priority-item"
+      className="d-flex align-items-center"
+    >
       <div className={`label-indicator ${value}`}></div>
       <div>{label}</div>
     </div>
@@ -64,6 +67,10 @@ function ModalAddItem({ show, handleClose, title, text }) {
       priority,
     };
     addItem(data);
+  };
+
+  const DropdownIndicator = () => {
+    return <div data-cy="modal-add-priority-dropdown" className="icon-dropdown mr-2"></div>;
   };
 
   return (
@@ -100,16 +107,16 @@ function ModalAddItem({ show, handleClose, title, text }) {
             </div>
             <label data-cy="modal-add-priority-title">PRIORITY</label>
             <br />
-            <div data-cy="modal-add-priority-dropdown">
-              <Select
-                defaultValue={options[0]}
-                formatOptionLabel={formatOptionLabel}
-                options={options}
-                className="select-priority"
-                onChange={(e) => setPriority(e.value)}
-                id="AddFormPriority"
-              />
-            </div>
+            <Select
+              defaultValue={options[0]}
+              formatOptionLabel={formatOptionLabel}
+              options={options}
+              className="select-priority"
+              onChange={(e) => setPriority(e.value)}
+              id="AddFormPriority"
+              onMouseOver={() => console.log("lagi di atas awan")}
+              components={{ DropdownIndicator }}
+            />
           </Form.Group>
         </Modal.Body>
         <Modal.Footer className="pb-4">
