@@ -2,7 +2,7 @@ import Axios from "axios";
 
 
 const api = Axios.create({
-  baseURL: "https://api.todo.dev.gethired.id",
+  baseURL: "https://todo.api.devcode.gethired.id",
   headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json'
