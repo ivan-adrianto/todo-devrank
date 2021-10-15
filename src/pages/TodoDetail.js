@@ -1,15 +1,20 @@
-import React, { useEffect } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
+import { Spinner } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router";
-import TodoDetailModule from "../components/TodoDetail/TodoDetailModule";
-import Header from "../layout/Header";
 import { titlePage } from "../lib/titleHead";
 import { Creators as TodoActions } from "../redux/TodoRedux";
+const TodoDetailModule = lazy(() =>
+  import("../components/TodoDetail/TodoDetailModule")
+);
+const Header = lazy(() =>
+  import("../layout/Header")
+);
 
 function TodoDetail() {
   const params = useParams().todoId
   const dispatch = useDispatch()
-  const getTodoDetail = (data) => dispatch(TodoActions.getActivityDetailRequest(data)) 
+  const getTodoDetail = (data) => dispatch(TodoActions.getActivityDetailRequest(data))
   useEffect(() => {
     titlePage({
       title: "To Do List - Detail",
@@ -18,10 +23,10 @@ function TodoDetail() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <div>
+    <Suspense fallback={<Spinner/>}>
       <Header />
       <TodoDetailModule />
-    </div>
+    </Suspense>
   );
 }
 

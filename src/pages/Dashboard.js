@@ -1,9 +1,15 @@
-import React, { useEffect } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
+import { Spinner } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import DashboardModule from "../components/Dashboard/DashboardModule";
-import Header from "../layout/Header";
 import { titlePage } from "../lib/titleHead";
 import { Creators as TodoActions } from "../redux/TodoRedux";
+const DashboardModule = lazy(() =>
+  import("../components/Dashboard/DashboardModule")
+);
+const Header = lazy(() =>
+  import("../layout/Header")
+);
+
 
 function Dashboard() {
   const dispatch = useDispatch();
@@ -12,14 +18,14 @@ function Dashboard() {
     titlePage({
       title: "To Do List - Dashboard",
     });
-    getActivities()
+    getActivities();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <div>
+    <Suspense fallback={<Spinner />}>
       <Header />
       <DashboardModule />
-    </div>
+    </Suspense>
   );
 }
 
