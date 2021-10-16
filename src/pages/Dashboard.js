@@ -1,5 +1,4 @@
 import React, { lazy, Suspense, useEffect } from "react";
-import { Spinner } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { titlePage } from "../lib/titleHead";
 import { Creators as TodoActions } from "../redux/TodoRedux";
@@ -22,7 +21,7 @@ function Dashboard() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <Suspense fallback={<Spinner />}>
+    <Suspense fallback={<p>Loading...</p>}>
       <Header />
       <DashboardModule />
     </Suspense>
