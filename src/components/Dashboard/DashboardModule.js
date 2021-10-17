@@ -9,6 +9,7 @@ import "dayjs/locale/id";
 import ModalToast from "../Modals/ModalToast";
 import { Creators as TodoActions } from "../../redux/TodoRedux";
 import emptyItem from "../../assets/images/empty-activity.png"
+import plusIcon from "../../assets/images/icon-plus.svg"
 
 function DashboardModule() {
   const history = useHistory();
@@ -31,7 +32,7 @@ function DashboardModule() {
   const [showToast, setShowToast] = useState(false);
   const [toastType, setToastType] = useState("danger");
   const [deletedActivity, setDeletedActivity] = useState("");
-  
+
   useEffect(() => {
     if (errAddActivity !== null) {
       setShowToast(true);
@@ -58,7 +59,7 @@ function DashboardModule() {
       resetState()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[errGetActivities])
+  }, [errGetActivities])
 
   useEffect(() => {
     if (errDeleteActivity !== null) {
@@ -104,7 +105,9 @@ function DashboardModule() {
             />
           ) : (
             <>
-              <span className="icon-plus"></span> {"Tambah"}
+              <span className="icon-plus">
+                <img src={plusIcon} alt="plus" />
+              </span> {"Tambah"}
             </>
           )}
         </button>

@@ -10,6 +10,16 @@ import ModalAddItem from "../Modals/ModalAddItem";
 import ModalToast from "../Modals/ModalToast";
 import ModalDelete from "../Modals/ModalDelete";
 import ModalEditItem from "../Modals/ModalEditItem";
+import backIcon from "../../assets/images/icon-back.svg"
+import editIconH from "../../assets/images/icon-edit-h.svg"
+import sortIcon from "../../assets/images/icon-sort.svg"
+import sortNewestIcon from "../../assets/images/icon-sort-newest.svg"
+import sortOldestIcon from "../../assets/images/icon-sort-oldest.svg"
+import sortIconAlphabetAscending from "../../assets/images/icon-sort-a-alpha.svg"
+import sortIconAlphabetDescending from "../../assets/images/icon-sort-d-alpha.svg"
+import sortDoneIcon from "../../assets/images/icon-sort-active.svg"
+import plusIcon from "../../assets/images/icon-plus.svg"
+import editPIcon from "../../assets/images/icon-edit-p.svg"
 
 function TodoDetailModule() {
   const params = useParams().todoId;
@@ -254,7 +264,9 @@ function TodoDetailModule() {
                 className="icon-back"
                 onClick={() => history.push("/")}
                 data-cy="todo-back-button"
-              ></div>
+              >
+                <img src={backIcon} alt="back" />
+              </div>
               {isEditTitle ? (
                 <input
                   type="text"
@@ -276,7 +288,9 @@ function TodoDetailModule() {
                 className="icon-edit-h"
                 data-cy="todo-title-edit-button"
                 onClick={handleEditTitle}
-              ></div>
+              >
+                <img src={editIconH} alt="edit" />
+              </div>
             </div>
             <div className="d-flex">
               <Dropdown>
@@ -289,7 +303,9 @@ function TodoDetailModule() {
                     data-cy="todo-sort-button"
                     className="btn-sort"
                   >
-                    <div className="icon-sort"></div>
+                    <div className="icon-sort">
+                      <img src={sortIcon} alt="sort" />
+                    </div>
                   </button>
                 </Dropdown.Toggle>
 
@@ -307,7 +323,9 @@ function TodoDetailModule() {
                       <div
                         data-cy="sort-selection-icon"
                         className="icon-sort-newest"
-                      ></div>
+                      >
+                        <img src={sortNewestIcon} alt="newest" />
+                      </div>
                       <span data-cy="sort-selection-title">Terbaru</span>
                     </div>
                   </Dropdown.Item>
@@ -327,7 +345,9 @@ function TodoDetailModule() {
                       <div
                         data-cy="sort-selection-icon"
                         className="icon-sort-oldest"
-                      ></div>
+                      >
+                        <img src={sortOldestIcon} alt="oldest" />
+                      </div>
                       <span data-cy="sort-selection-title">Terlama</span>
                     </div>
                   </Dropdown.Item>
@@ -344,7 +364,9 @@ function TodoDetailModule() {
                       <div
                         data-cy="sort-selection-icon"
                         className="icon-sort-a-alpha"
-                      ></div>
+                      >
+                        <img src={sortIconAlphabetAscending} alt="ascending" />
+                      </div>
                       <span data-cy="sort-selection-title">A-Z</span>
                     </div>
                   </Dropdown.Item>
@@ -364,7 +386,9 @@ function TodoDetailModule() {
                       <div
                         data-cy="sort-selection-icon"
                         className="icon-sort-d-alpha"
-                      ></div>
+                      >
+                        <img src={sortIconAlphabetDescending} alt="" />
+                      </div>
                       <span data-cy="sort-selection-title">Z-A</span>
                     </div>
                   </Dropdown.Item>
@@ -384,7 +408,9 @@ function TodoDetailModule() {
                       <div
                         data-cy="sort-selection-icon"
                         className="icon-sort-done"
-                      ></div>
+                      >
+                        <img src={sortDoneIcon} alt="done" />
+                      </div>
                       <span data-cy="sort-selection-title">Belum Selesai</span>
                     </div>
                   </Dropdown.Item>
@@ -396,7 +422,8 @@ function TodoDetailModule() {
                 id="ButtonAddDetail"
                 data-cy="todo-add-button"
               >
-                <span className="icon-plus"></span> Tambah
+                <span className="icon-plus">
+                  <img src={plusIcon} alt="plus" /></span> Tambah
               </button>
             </div>
           </div>
@@ -435,7 +462,9 @@ function TodoDetailModule() {
                       className="icon-edit-p"
                       onClick={() => handleClickEdit(item)}
                       data-cy="todo-item-edit-button"
-                    ></div>
+                    >
+                      <img src={editPIcon} alt="edit" />
+                    </div>
                   </div>
                   <img
                     src={deleteIcon}
