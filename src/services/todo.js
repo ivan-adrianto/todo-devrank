@@ -1,7 +1,7 @@
 import api from "./apiService";
 
 export async function getActivityList() {
-  const res = await api.get("/activity-groups");
+  const res = await api.get("/activity-groups?email=ivan@skyshi.com");
   return res;
 }
 

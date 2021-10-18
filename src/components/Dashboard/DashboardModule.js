@@ -78,7 +78,7 @@ function DashboardModule() {
   }, [errDeleteActivity, dataDeleteActivity]);
 
   const handleAddActivity = () => {
-    addActivity({ title: "New Activity" });
+    addActivity({ title: "New Activity", email: "ivan@skyshi.com" });
   };
 
   const handleClickDelete = (item) => {
