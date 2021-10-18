@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux";
 import { useParams } from "react-router";
 import Select from "react-select";
 import { Creators as TodoActions } from "../../redux/TodoRedux";
-import closeIcon from "../../assets/images/icon-close.svg"
 
 function ModalAddItem({ show, handleClose, title, text }) {
   const params = useParams().todoId;
@@ -93,9 +92,7 @@ function ModalAddItem({ show, handleClose, title, text }) {
               className="icon-close"
               onClick={handleClose}
               data-cy="modal-add-close-button"
-            >
-              <img src={closeIcon} alt="close" />
-            </div>
+            ></div>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>

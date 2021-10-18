@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux";
 import { useParams } from "react-router";
 import Select from "react-select";
 import { Creators as TodoActions } from "../../redux/TodoRedux";
-import closeIcon from "../../assets/images/icon-close.svg"
 
 function ModalEditItem({ show, handleClose, title, text, editedItem }) {
   const params = useParams().todoId;
@@ -102,9 +101,7 @@ function ModalEditItem({ show, handleClose, title, text, editedItem }) {
         <Modal.Header>
           <Modal.Title id="contained-modal-title-vcenter" className="pt-4">
             <h4 className="font-weight-bold">Edit Item</h4>
-            <div className="icon-close" onClick={handleClose}>
-              <img src={closeIcon} alt="close" />
-            </div>
+            <div className="icon-close" onClick={handleClose}></div>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>

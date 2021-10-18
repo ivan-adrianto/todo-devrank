@@ -1,7 +1,5 @@
 import React from "react";
 import { Modal } from "react-bootstrap";
-import alertIconSm from "../../assets/images/icon-alert-sm.svg"
-import dangerIcon from "../../assets/images/icon-alert.svg"
 
 function ModalToast({ show, handleClose, title, text, type }) {
   return (
@@ -15,9 +13,7 @@ function ModalToast({ show, handleClose, title, text, type }) {
         centered
       >
         <Modal.Body onClick={handleClose} >
-          <div data-cy="modal-information-icon" >
-            <img src={type === "success" ? alertIconSm : dangerIcon} alt="" className="icon-danger-sm" />
-          </div>
+          <div data-cy="modal-information-icon" className={type === "success" ? "icon-alert-sm" : "icon-danger-sm"}></div>
           <p data-cy="modal-information-title" className="pl-3 pr-3">{text}</p>
         </Modal.Body>
       </Modal>
