@@ -44,7 +44,7 @@ function ModalEditItem({ show, handleClose, title, text, editedItem }) {
       label: "High",
     },
     {
-      value: "medium",
+      value: "normal",
       label: "Medium",
     },
     {

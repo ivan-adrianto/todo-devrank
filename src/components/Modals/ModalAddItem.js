@@ -37,7 +37,7 @@ function ModalAddItem({ show, handleClose, title, text }) {
       label: "High",
     },
     {
-      value: "medium",
+      value: "normal",
       label: "Medium",
     },
     {
